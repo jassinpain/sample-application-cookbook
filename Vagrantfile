@@ -32,7 +32,13 @@ Vagrant::configure("2") do |config|
       # see http://www.windowsazure.com/en-us/manage/linux/how-to-guides/ssh-into-linux/
       override.ssh.private_key_path = 'W:\home\.ssh\azure-dev-cert.key'
 
-      managed.server = "trs-test-for-hcn.cloudapp.net"
+      # enable passwordless sudo for azure VM
+      # XXX: does not work because rsync happens/fails even before shell provisioner is run
+      # XXX: override.vm.provision :shell, :inline => 'echo "ubuntu#123" | sudo -S sed -i "s/(ALL) ALL/(ALL) NOPASSWD: ALL/g" /etc/sudoers.d/waagent'
+      # use instead:
+      # vagrant ssh -c "echo 'ubuntu#123' | sudo -S sed -i 's/(ALL) ALL/(ALL) NOPASSWD: ALL/g' /etc/sudoers.d/waagent"
+
+      managed.server = "tkntest123.cloudapp.net"
     end
 
     # provisioning
@@ -40,7 +46,7 @@ Vagrant::configure("2") do |config|
       chef.add_recipe "sample-app"
       chef.json = {
         :sample_app => {
-          :words_of_wisdom => "Hey Johnson, if you can see this everything is fine!"
+          :words_of_wisdom => "Chuck Norris's beard can type 140 wpm!"
         }
       }
     end

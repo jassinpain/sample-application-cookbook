@@ -1,1 +1,1 @@
-azure vm delete -b trs-test-for-hcn
+azure vm delete -b tkntest123
