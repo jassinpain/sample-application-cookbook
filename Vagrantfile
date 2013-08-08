@@ -4,7 +4,7 @@ Vagrant::configure("2") do |config|
   # enable cachier
   config.cache.auto_detect = true
   # the Chef version to use
-  config.omnibus.chef_version = "11.4.4"
+  config.omnibus.chef_version = "11.6.0"
   # enable berkshelf plugin
   config.berkshelf.enabled = true
   
@@ -40,9 +40,10 @@ Vagrant::configure("2") do |config|
       chef.add_recipe "sample-app"
       chef.json = {
         :sample_app => {
-          :words_of_wisdom => "Chuck Norris's beard can type 140 wpm!"
+          :words_of_wisdom => "Chuck Norris' beard can type 140 wpm!"
         }
       }
+      chef.log_level = :debug
     end
   end 
 end
