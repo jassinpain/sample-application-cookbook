@@ -25,3 +25,8 @@ template "/var/www/sample.html" do
   )
 end
 
+
+node.set['java']['jdk_version'] = "7"
+node.set['java']['openjdk_packages'] = ["openjdk-#{node['java']['jdk_version']}-jdk", "default-jre-headless"]
+
+include_recipe "java"

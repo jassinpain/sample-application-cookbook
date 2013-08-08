@@ -11,3 +11,4 @@ version          "0.1.0"
 #
 depends "apache2",  "1.5.0"
 depends "apt",      "1.3.2"
+depends "java",     "1.12.0"
