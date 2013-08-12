@@ -15,13 +15,23 @@ Vagrant::configure("2") do |config|
     
     # configure the basebox
     sample_app_config.vm.box = "opscode_ubuntu-13.04_provisionerless"
-    sample_app_config.vm.box_url = "https://opscode-vm.s3.amazonaws.com/vagrant/opscode_ubuntu-13.04_provisionerless.box"
+
     # configure host-only network
     sample_app_config.vm.hostname = "sample-app.local"
-    sample_app_config.vm.network :private_network, ip: "33.33.40.15" 
+
     # virtualbox customizations
     sample_app_config.vm.provider :virtualbox do |vbox, override|
-      vbox.customize ["modifyvm", :id, "--name", "sample-app.local"] 
+      override.vm.box_url = "https://opscode-vm.s3.amazonaws.com/vagrant/opscode_ubuntu-13.04_provisionerless.box"
+      override.vm.network :private_network, ip: "33.33.40.15"
+
+      vbox.customize ["modifyvm", :id,
+        "--name", "sample-app.local"
+      ]
+    end
+
+    # lxc provider customizations
+    sample_app_config.vm.provider :lxc do |lxc, override|
+      override.vm.box_url = "http://bit.ly/vagrant-lxc-raring64-2013-07-12"
     end
     
     # provisioning
