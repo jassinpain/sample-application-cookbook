@@ -32,6 +32,7 @@ Vagrant::configure("2") do |config|
     # lxc provider customizations
     sample_app_config.vm.provider :lxc do |lxc, override|
       override.vm.box_url = "http://bit.ly/vagrant-lxc-raring64-2013-07-12"
+      lxc.sudo_wrapper = "/usr/bin/lxc-vagrant-wrapper"
     end
     
     # provisioning
