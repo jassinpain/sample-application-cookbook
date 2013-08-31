@@ -3,8 +3,10 @@ Vagrant::configure("2") do |config|
 
   # enable cachier
   config.cache.auto_detect = true
+  # use a slightly modified install.sh which accomodates for caching
+  ENV['OMNIBUS_INSTALL_URL'] = 'https://gist.github.com/tknerr/6398023/raw/c3c4e28f0bf4071a5d3225cdc4d756f656fadae8/install.sh'
   # the Chef version to use
-  config.omnibus.chef_version = "11.4.4"
+  config.omnibus.chef_version = "11.6.0"
   # enable berkshelf plugin
   config.berkshelf.enabled = true
   
@@ -33,5 +35,5 @@ Vagrant::configure("2") do |config|
         }
       }
     end
-  end 
+  end
 end
