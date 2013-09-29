@@ -4,7 +4,7 @@ Vagrant::configure("2") do |config|
   # enable cachier
   config.cache.auto_detect = true
   # the Chef version to use
-  config.omnibus.chef_version = "11.4.4"
+  config.omnibus.chef_version = "11.6.0"
   # enable berkshelf plugin
   config.berkshelf.enabled = true
   
@@ -19,7 +19,8 @@ Vagrant::configure("2") do |config|
     # configure host-only network
     sample_app_config.vm.hostname = "sample-app.local"
 
-    # virtualbox customizations
+
+    # virtualbox-specific customizations
     sample_app_config.vm.provider :virtualbox do |vbox, override|
       override.vm.box_url = "https://opscode-vm.s3.amazonaws.com/vagrant/opscode_ubuntu-13.04_provisionerless.box"
       override.vm.network :private_network, ip: "33.33.40.15"
@@ -43,6 +44,7 @@ Vagrant::configure("2") do |config|
           :words_of_wisdom => "Chuck Norris' beard can type 140 wpm!"
         }
       }
+      chef.log_level = :debug
     end
   end 
 end
