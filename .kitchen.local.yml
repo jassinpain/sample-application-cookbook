@@ -1,0 +1,11 @@
+---
+platforms:
+- name: ubuntu-13.04
+  driver_config:
+    box: lxc-precise-amd64-2013-07-12
+    box_url: http://dl.dropbox.com/u/13510779/lxc-precise-amd64-2013-07-12.box
+    require_chef_omnibus: "11.6.0"
+    chef_omnibus_url: https://gist.github.com/hectcastro/6443633/raw/install.sh
+    # Requires a patched version of kitchen-vagrant:
+    # https://github.com/hectcastro/kitchen-vagrant/compare/hc-cachier
+    use_cachier_plugin: true
