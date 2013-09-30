@@ -31,12 +31,14 @@ Vagrant::configure("2") do |config|
     sample_app_config.vm.provider :vcloud do |vcloud, override|
       override.vm.box = "precise32"
       override.vm.box_url = "http://vagrant.tsugliani.fr/precise32.box"
+      #override.vm.box = "Ubuntu_Vagrantbox"
+      #override.vm.box_url = "https://github.com/tknerr/vagrant-vcloud/raw/develop_experimenting/dummy.box"
       vcloud.hostname = "https://v-swd-vcld02"
       vcloud.org_name = "qa"
-      vcloud.username = "knerrt"
+      vcloud.username = ENV['VCLOUD_API_USER']
       vcloud.password = ENV['VCLOUD_API_PASS']
-      vcloud.catalog_name = "vagrant"
-      #vcloud.catalog_item_name = "ubuntu"
+      #vcloud.catalog_name = "vagrant"
+      vcloud.catalog_item_name = "ubuntu"
       vcloud.vdc_name = "QA vDC"
       vcloud.vdc_network_name = "QA direct connect 2 HGNet"
     end
