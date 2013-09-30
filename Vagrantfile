@@ -37,8 +37,8 @@ Vagrant::configure("2") do |config|
       vcloud.org_name = "qa"
       vcloud.username = ENV['VCLOUD_API_USER']
       vcloud.password = ENV['VCLOUD_API_PASS']
-      #vcloud.catalog_name = "vagrant"
-      vcloud.catalog_item_name = "ubuntu"
+      vcloud.catalog_name = "vagrant"
+      #vcloud.catalog_item_name = "ubuntu"
       vcloud.vdc_name = "QA vDC"
       vcloud.vdc_network_name = "QA direct connect 2 HGNet"
     end
